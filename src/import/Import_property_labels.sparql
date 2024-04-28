@@ -1,0 +1,7 @@
+# Import property labels
+SELECT ?item ?itemLabel 
+WHERE 
+{
+  ?item wdt:P31/wdt:P279* wd:Q18616576. # Must be of a instance of a subclass of Wd Property
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}
