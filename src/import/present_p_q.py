@@ -20,8 +20,8 @@ for q in sorted(list(sbpbq.keys()), key = lambda x : sbq[x], reverse = True):
     print(firstq)
     firstq = ','
     qname = pname[q].replace('"','\\"') if q in pname else '*** UNKNOWN NAME '+q
-    print(f""""{sbq[q]:.>9} {q} ({qname})": {{"{qname}": "https://www.wikidata.org/wiki/Property:{q}",""")
-    first = ''
+    print(f""""{sbq[q]:.>9} {q} {qname}": {{"{qname}": "https://www.wikidata.org/wiki/Property:{q}" """)
+    first = ','
     for p in sorted( list(sbpbq[q].keys()), key = lambda x : sbpbq[q][x], reverse=True):
         pn  = pname[p].replace('"','\\"') if p in pname else '*** UNKNOWN NAME '+p
         print(f"""{first} "{p:.<6}.{sbpbq[q][p]:.>9}  {pn}": "https://www.wikidata.org/wiki/Property:{p}" """)
