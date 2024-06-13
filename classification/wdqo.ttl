@@ -6,7 +6,21 @@
 @prefix prop: <https://www.wikidata.org/wiki/Property:> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-<http://cui.unige.ch/isi/onto/wdqo> a owl:Ontology .
+<http://purl.org/wdqo> a owl:Ontology ;
+	owl:versionIRI <https://purl.org/wdqo/wdqo.owl> .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2004/02/skos/core#altLabel
+
+<http://www.w3.org/2004/02/skos/core#altLabel> a owl:AnnotationProperty .
+# 
 # 
 # 
 # #################################################################
@@ -16,16 +30,16 @@
 # #################################################################
 # 
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Additional_Information
+# http://purl.org/wdqo#Additional_Information
 
-<http://cui.unige.ch/isi/onto/wdqo#Additional_Information> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#WdQualifier> ;
+<http://purl.org/wdqo#Additional_Information> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> ;
 	rdfs:comment "The qualifier adds information, without changing the meaning of the statement" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Causality
+# http://purl.org/wdqo#Causality
 
-<http://cui.unige.ch/isi/onto/wdqo#Causality> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Additional_Information> ;
+<http://purl.org/wdqo#Causality> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> ;
 	rdfs:comment """These qualifier express causes related to the statement
 
 - end cause: what caused the statement to become false
@@ -33,10 +47,23 @@
 - has immediate cause
 - is immediate cause of""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Epistemic_Status
+# http://purl.org/wdqo#Context
 
-<http://cui.unige.ch/isi/onto/wdqo#Epistemic_Status> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Additional_Information> ;
+<http://purl.org/wdqo#Context> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> ;
+	rdfs:comment """Restricts the validity of a statement. Without this restriction the statement would be universally valid for the given subject and object. 
+
+A validity can be charaterized along several dimensions such as time, space, abstract space (\\textsf{applies to jurisdiction}), geographic space, object-related , ...
+
+In general, statements about an endurant entity (entity that can change over time) have a temporal validity, unless they participate in the identity of the entity (e.g. the DNA sequence of a virus stain cannot change). 
+
+In Wikidata if the time validity is not specified for a statement about an endurant this means that the statement is true for the whole lifetime of the entity.""" ;
+	<http://www.w3.org/2004/02/skos/core#altLabel> "Validity" .
+# 
+# http://purl.org/wdqo#Epistemic_Status
+
+<http://purl.org/wdqo#Epistemic_Status> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> ;
 	rdfs:comment """The certainty, probability, etc. of the statement 
 
 Direct epistemic qualifiers
@@ -49,10 +76,10 @@ These qualifiers do not define a validity context, this dimension is orthogonal 
 Indiret
 - latest date qualifies temporal properties such as inception, date of death, publication date, ... It introduces uncertainty (and/or fuzziness) in the qualified statement""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#External_Object_Description
+# http://purl.org/wdqo#External_Object_Description
 
-<http://cui.unige.ch/isi/onto/wdqo#External_Object_Description> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Additional_Information> ;
+<http://purl.org/wdqo#External_Object_Description> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> ;
 	rdfs:comment """When the object of a statement is the identifier (URL, catalog ID, ...) of an entity that is not described in Wd (not a Wd item), these qualifiers are used to describe this object. 
 
 Typical examples: ...
@@ -65,10 +92,15 @@ Typical examples: ...
 - copyright license
 - distribution format""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Object-Statement_Relation
+# http://purl.org/wdqo#Metalanguage_and_Graph_Management
 
-<http://cui.unige.ch/isi/onto/wdqo#Object-Statement_Relation> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Additional_Information> ;
+<http://purl.org/wdqo#Metalanguage_and_Graph_Management> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> .
+# 
+# http://purl.org/wdqo#Object-Statement_Relation
+
+<http://purl.org/wdqo#Object-Statement_Relation> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> ;
 	rdfs:comment """Provides a relation between the object and the statement
 
 Example
@@ -76,15 +108,15 @@ Example
 - character role, e.g. (2001 A Space Odyssey,  cast member, Keir Dullea)[character role: David Bowman]
 - object has role""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Organizational_Context
+# http://purl.org/wdqo#Organizational_Context
 
-<http://cui.unige.ch/isi/onto/wdqo#Organizational_Context> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Context_(aka_Validity)> .
+<http://purl.org/wdqo#Organizational_Context> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Context> .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Provenance
+# http://purl.org/wdqo#Provenance
 
-<http://cui.unige.ch/isi/onto/wdqo#Provenance> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Additional_Information> ;
+<http://purl.org/wdqo#Provenance> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> ;
 	rdfs:comment """In Wikidata, the provenance (source) of a statement is indicated by its references. Since every statement should be based on at least one reference, Wikidata has its own mechanism for handling references, so there is no reference qualifier. However, some qualifiers may add information about the provenance of a statement.
 
 - object named as (how the object of the st. is denoted in original source)
@@ -94,10 +126,14 @@ Example
 - reason for preferred rank
 - statement supported by""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Sequence
+# http://purl.org/wdqo#Qualifier
 
-<http://cui.unige.ch/isi/onto/wdqo#Sequence> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Additional_Information> ;
+<http://purl.org/wdqo#Qualifier> a owl:Class .
+# 
+# http://purl.org/wdqo#Sequence
+
+<http://purl.org/wdqo#Sequence> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> ;
 	rdfs:comment """Position of the subjet or object of this statement in the list of entities that have the same predicate and oject (resp. subject).
 
 Typical examples
@@ -110,15 +146,20 @@ Typical examples
 - replaces
 - replaced by""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Spatial_Context
+# http://purl.org/wdqo#Spatial_Context
 
-<http://cui.unige.ch/isi/onto/wdqo#Spatial_Context> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Context_(aka_Validity)> .
+<http://purl.org/wdqo#Spatial_Context> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Context> .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Structured_Value_Definition
+# http://purl.org/wdqo#Structured_Value
 
-<http://cui.unige.ch/isi/onto/wdqo#Structured_Value_Definition> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#WdQualifier> ;
+<http://purl.org/wdqo#Structured_Value> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> .
+# 
+# http://purl.org/wdqo#Structured_Value_Definition
+
+<http://purl.org/wdqo#Structured_Value_Definition> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> ;
 	rdfs:comment """When the object of a statement is an entity that is not a Wd item and that must be described by several fields. In this situation, if one does not want to create a proper entity, the technique consists in creating a statement that has one of the fields as object and the others as qualifiers.
 
 Examples
@@ -135,10 +176,10 @@ Without this information the statement does not make sense, except if there is a
 
 Many of these qualifiers have a very low diversity index, i.e. they are very specific to a property. For instance, \\textsf{astronomical filter} qualifies almost exclusively \\textsf{apparent magnitude}""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Subject_Modifier
+# http://purl.org/wdqo#Subject_Modifier
 
-<http://cui.unige.ch/isi/onto/wdqo#Subject_Modifier> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Context_(aka_Validity)> ;
+<http://purl.org/wdqo#Subject_Modifier> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Context> ;
 	rdfs:comment """Modify (extend or restrict) the subject.
 
 Sample instances  : 
@@ -149,36 +190,20 @@ Sample instances  :
 
 This typically applies to entites that have an extent or that are made of smaller parts (a country, a group of people)""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Subjet-Statement_Relation
+# http://purl.org/wdqo#Subjet-Statement_Relation
 
-<http://cui.unige.ch/isi/onto/wdqo#Subjet-Statement_Relation> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Additional_Information> ;
+<http://purl.org/wdqo#Subjet-Statement_Relation> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> ;
 	rdfs:comment """Describes a relation between the subject and the statement
 
 Examples:
 
 - subject has role, e.g. (Falk Kalamorz, employer, Institute for Crop and Food Research)[subject has role: scientist]""" .
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Temporal_Context
+# http://purl.org/wdqo#Temporal_Context
 
-<http://cui.unige.ch/isi/onto/wdqo#Temporal_Context> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#Context_(aka_Validity)> .
-# 
-# http://cui.unige.ch/isi/onto/wdqo#WdQualifier
-
-<http://cui.unige.ch/isi/onto/wdqo#WdQualifier> a owl:Class .
-# 
-# http://cui.unige.ch/isi/onto/wdqo#Context_(aka_Validity)
-
-<http://cui.unige.ch/isi/onto/wdqo#Context_(aka_Validity)> a owl:Class ;
-	rdfs:subClassOf <http://cui.unige.ch/isi/onto/wdqo#WdQualifier> ;
-	rdfs:comment """Restricts the validity of a statement. Without this restriction the statement would be universally valid for the given subject and object. 
-
-A validity can be charaterized along several dimensions such as time, space, abstract space (\\textsf{applies to jurisdiction}), geographic space, object-related , ...
-
-In general, statements about an endurant entity (entity that can change over time) have a temporal validity, unless they participate in the identity of the entity (e.g. the DNA sequence of a virus stain cannot change). 
-
-In Wikidata if the time validity is not specified for a statement about an endurant this means that the statement is true for the whole lifetime of the entity.""" .
+<http://purl.org/wdqo#Temporal_Context> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Context> .
 # 
 # 
 # 
@@ -189,18 +214,18 @@ In Wikidata if the time validity is not specified for a statement about an endur
 # #################################################################
 # 
 # 
-# http://cui.unige.ch/isi/onto/wdqo#Pxxxx-object_has_role
+# http://purl.org/wdqo#Pxxxx-object_has_role
 
-<http://cui.unige.ch/isi/onto/wdqo#Pxxxx-object_has_role> a owl:NamedIndividual .
+<http://purl.org/wdqo#Pxxxx-object_has_role> a owl:NamedIndividual .
 # 
 # https://www.wikidata.org/wiki/Property:P1534
 
-<https://www.wikidata.org/wiki/Property:P1534> a owl:NamedIndividual , <http://cui.unige.ch/isi/onto/wdqo#Causality> ;
+<https://www.wikidata.org/wiki/Property:P1534> a owl:NamedIndividual , <http://purl.org/wdqo#Causality> ;
 	rdfs:label "end cause" .
 # 
 # https://www.wikidata.org/wiki/Property:P828
 
-<https://www.wikidata.org/wiki/Property:P828> a owl:NamedIndividual , <http://cui.unige.ch/isi/onto/wdqo#Causality> ;
+<https://www.wikidata.org/wiki/Property:P828> a owl:NamedIndividual , <http://purl.org/wdqo#Causality> ;
 	rdfs:label "has cause" .
 # 
 # Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
