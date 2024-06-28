@@ -3,8 +3,9 @@ Compute the diversity indexes for the qualifiers
 
 output: for each qualifier several diversity indexes 
     currently:
-        - the Shannon diversity index
-        - the normalized Shannon index
+        - the Hill number of order 1, which is exp(Shannon diversity index)
+        - the proportional Hill number of order 1, which is exp(Shannon diversity index)
+           on the proportional frequencies of the properties
         
     For a qualifier Q, 
     
@@ -12,9 +13,9 @@ output: for each qualifier several diversity indexes
         
         where 
         - f(Q, Pi) is the frequency of Q in statements with predicate Pi
-        - s(Q) is the sum of the F(Q, Pi) over all the Pi's
+        - s(Q) is the sum of the f(Q, Pi) over all the Pi's
         
-        ShannonNorm(Q) = Sum_{Pi \in P}{f(Q, Pi)/f(Pi)/sn(Q) * log(f(q, Pi)/f(Pi)/sn(Q))}
+        ShannonProp(Q) = Sum_{Pi \in P}{f(Q, Pi)/f(Pi)/sn(Q) * log(f(q, Pi)/f(Pi)/sn(Q))}
         
         where
         - f(Pi) is the number of statement with predicate Pi
@@ -50,7 +51,7 @@ for q in f:
     for p in f[q]: 
         snq += f[q][p]/fp[p]
     shan = 0.0
-    shannorm = 0.0
+    shanprop = 0.0
     sumtp = 0.0
     sumtpn = 0.0
     for p in f[q]: 
@@ -58,10 +59,10 @@ for q in f:
         shan +=  tp * math.log(tp)
         sumtp += tp
         tpn = f[q][p]/fp[p]/snq
-        shannorm += tpn * math.log(tpn)
+        shanprop += tpn * math.log(tpn)
         sumtpn += tpn
     idx = math.exp(-shan)
-    idxn = math.exp(-shannorm)
+    idxn = math.exp(-shanprop)
     divsh[q] = idx
     divshn[q] = idxn
 
