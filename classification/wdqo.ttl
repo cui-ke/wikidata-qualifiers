@@ -60,22 +60,6 @@ In general, statements about an endurant entity (entity that can change over tim
 In Wikidata if the time validity is not specified for a statement about an endurant this means that the statement is true for the whole lifetime of the entity.""" ;
 	<http://www.w3.org/2004/02/skos/core#altLabel> "Validity" .
 # 
-# http://purl.org/wdqo#Epistemic_Status
-
-<http://purl.org/wdqo#Epistemic_Status> a owl:Class ;
-	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> ;
-	rdfs:comment """The certainty, probability, etc. of the statement 
-
-Direct epistemic qualifiers
-
-- sourcing circumstances (P1480)} qualifies accuracy, reliability, confidence, precision, certainty of a statement (with values such as advertising, folklore, doubt, approximation, falsity, ..., ); 
-- nature of statement (P5102) } (hypothesis, allegation, de jure, de facto, ...) 
-
-These qualifiers do not define a validity context, this dimension is orthogonal to validity
-      
-Indiret
-- latest date qualifies temporal properties such as inception, date of death, publication date, ... It introduces uncertainty (and/or fuzziness) in the qualified statement""" .
-# 
 # http://purl.org/wdqo#External_Object_Description
 
 <http://purl.org/wdqo#External_Object_Description> a owl:Class ;
@@ -92,10 +76,25 @@ Typical examples: ...
 - copyright license
 - distribution format""" .
 # 
-# http://purl.org/wdqo#Metalanguage_and_Graph_Management
+# http://purl.org/wdqo#Field_of_a_Structure
 
-<http://purl.org/wdqo#Metalanguage_and_Graph_Management> a owl:Class ;
-	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> .
+<http://purl.org/wdqo#Field_of_a_Structure> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> .
+# 
+# http://purl.org/wdqo#Field_of_a_Subject_Structure
+
+<http://purl.org/wdqo#Field_of_a_Subject_Structure> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Field_of_a_Structure> .
+# 
+# http://purl.org/wdqo#Field_of_a_Value_Structure
+
+<http://purl.org/wdqo#Field_of_a_Value_Structure> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Field_of_a_Structure> .
+# 
+# http://purl.org/wdqo#Metalanguage_to_define_Category_List_Constraint
+
+<http://purl.org/wdqo#Metalanguage_to_define_Category_List_Constraint> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> .
 # 
 # http://purl.org/wdqo#Object-Statement_Relation
 
@@ -151,11 +150,6 @@ Typical examples
 <http://purl.org/wdqo#Spatial_Context> a owl:Class ;
 	rdfs:subClassOf <http://purl.org/wdqo#Context> .
 # 
-# http://purl.org/wdqo#Structured_Value
-
-<http://purl.org/wdqo#Structured_Value> a owl:Class ;
-	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> .
-# 
 # http://purl.org/wdqo#Structured_Value_Definition
 
 <http://purl.org/wdqo#Structured_Value_Definition> a owl:Class ;
@@ -204,6 +198,22 @@ Examples:
 
 <http://purl.org/wdqo#Temporal_Context> a owl:Class ;
 	rdfs:subClassOf <http://purl.org/wdqo#Context> .
+# 
+# http://purl.org/wdqo#Uncertainty
+
+<http://purl.org/wdqo#Uncertainty> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> ;
+	rdfs:comment """The certainty, probability, etc. of the statement 
+
+Direct epistemic qualifiers
+
+- sourcing circumstances (P1480)} qualifies accuracy, reliability, confidence, precision, certainty of a statement (with values such as advertising, folklore, doubt, approximation, falsity, ..., ); 
+- nature of statement (P5102) } (hypothesis, allegation, de jure, de facto, ...) 
+
+These qualifiers do not define a validity context, this dimension is orthogonal to validity
+      
+Indiret
+- latest date qualifies temporal properties such as inception, date of death, publication date, ... It introduces uncertainty (and/or fuzziness) in the qualified statement""" .
 # 
 # 
 # 

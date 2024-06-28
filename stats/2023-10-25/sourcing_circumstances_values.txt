@@ -1,0 +1,234 @@
+
+SELECT   ?sv ?svLabel (count(?stmt) as ?cs) # ?item ?itemLabel
+WHERE
+{ ?stmt 
+#pq:P5102 
+pq:P1480
+?sv
+SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}
+group by ?sv ?svLabel
+order by desc(?cs )
+
+    Table
+
+    629 results in 39983 ms  
+
+    Download
+    Link
+
+sv
+	
+svLabel
+	
+cs
+wd:Q5727902	circa	318032
+wd:Q18122778	presumably	12345
+wd:Q106419137	specified date of Islamic calendar	7794
+wd:Q32188232	allegedly	6136
+wd:Q408386	inference	4700
+wd:Q30230067	possibly	4693
+wd:Q13649246	uncertainty	4560
+wd:Q21818619	near	4416
+wd:Q56644435	probably	4089
+wd:Q105769095	conventional date	3764
+wd:Q18912752	disputed	1800
+wd:Q52834024	less than	1522
+wd:Q230768	attribution	1111
+wd:Q60070514	approximately	1057
+wd:Q26877139	unspecified calendar, assumed Gregorian	841
+wd:Q47035128	greater than	788
+wd:Q191891	fiscal year	745
+wd:Q26877143	unspecified calendar, assumed Julian	680
+wd:Q2796622	mean	603
+wd:Q21097017	possibly approximate value	588
+wd:Q50095342	hierarchical link is not direct	558
+wd:Q18195782	unspecified calendar	534
+wd:Q55935291	greater than or equal to	486
+wd:Q110290991	no earlier than	473
+wd:Q37113960	estimate	408
+wd:Q10585806	minimum	362
+wd:Q26961029	statement with Gregorian date earlier than 1584	362
+wd:Q55935272	less than or equal to	357
+wd:Q79030196	before	319
+wd:Q79030284	after	272
+wd:Q10578722	maximum	267
+wd:Q50376823	expected	227
+wd:Q27055388	specified date of both Julian and Gregorian calendar	197
+wd:Q59783740	according to some sources	185
+wd:Q104378399	dubious	139
+wd:Q60503972	posthumous	123
+wd:Q27058	approximation	118
+wd:Q18603603	hypothetically	117
+wd:Q110290992	no later than	72
+wd:Q40719766	end of	61
+wd:Q21096955	misprint	60
+wd:Q3749265	fragment	55
+wd:Q106160493	undetermined	54
+wd:Q712144	de facto	48
+wd:Q54418095	more	47
+wd:Q41719	hypothesis	44
+wd:Q29509080	unofficial	37
+wd:Q40719727	beginning of	25
+wd:Q117712427	incorrect grammatical gender in source	25
+wd:Q40719748	middle of	24
+wd:Q34302	doubt	23
+wd:Q1423364	sp.	23
+wd:Q132555	de jure	19
+wd:Q791801	estimation	19
+wd:Q29485	error	16
+wd:Q47851538	redacted	16
+wd:Q603908	to be announced	15
+wd:Q30108381	cancelled	15
+wd:Q1434353	almost surely	14
+wd:Q105675146	misattribution	14
+wd:Q120965429	on-site survey	14
+wd:Q1395509	posthumous	12
+wd:Q14946528	conflation	12
+wd:Q59864995	optional	12
+wd:Q71536040	most precise value	12
+wd:Q104582646	Q104582646	12
+wd:Q36424	floruit	11
+wd:Q202785	average	11
+wd:Q363948	contradiction	11
+wd:Q21097088	misassociation	11
+wd:Q28831311	unconfirmed	11
+wd:Q40719707	second half	11
+wd:Q54835811	average	11
+wd:Q110143752	sometimes	11
+wd:Q328	English Wikipedia	10
+wd:Q54836621	common	10
+wd:Q56557591	preserved	10
+wd:Q77066609	incorrect name in source	10
+wd:Q101143128	one of the two	10
+wd:Q115455199	indirect	10
+wd:Q123137336	requested removal	10
+wd:Q35856	baptism	9
+wd:Q2496920	uncertain knowledge	9
+wd:Q253623	patent	8
+wd:Q380559	consolidated financial statement	8
+wd:Q21042816	age for a given year mentioned in source	8
+wd:Q24097670	voting round	8
+wd:Q56685043	nonconsolidated financial statement	8
+wd:Q91013007	mainly	8
+wd:Q108172170	no diacritics in source	8
+wd:Q122426205	periodically	8
+wd:Q189539	loan	7
+wd:Q367293	convention	7
+wd:Q3553757	approximate value	7
+wd:Q26162470	incompleteness	7
+wd:Q29509043	official	7
+wd:Q11169	question mark	6
+wd:Q4676846	acting	6
+wd:Q24575125	end time	6
+wd:Q70650920	dubious role	6
+wd:Q109104929	approximate centre point	6
+wd:Q1661	verse	5
+wd:Q9492	probability	5
+wd:Q11184	Julian calendar	5
+wd:Q192003	sic	5
+wd:Q201413	heuristic	5
+wd:Q529711	beginning	5
+wd:Q734832	typographical error	5
+wd:Q1236807	URL redirection	5
+wd:Q2492572	uncitedness	5
+wd:Q3151690	today	5
+wd:Q16571590	reopening	5
+wd:Q22979588	source known to be unreliable	5
+wd:Q26932615	statement with potentially incorrect Julian date	5
+wd:Q31777238	Q31777238	5
+wd:Q40719687	first half	5
+wd:Q51367591	specified date of Gregorian calendar	5
+wd:Q59608653	classified	5
+wd:Q86454040	existence uncertain	5
+wd:Q110558700	illegible	5
+wd:Q125227227	unrecognized	5
+wd:Q7063	11th century	4
+wd:Q44342	legend	4
+wd:Q319141	conjecture	4
+wd:Q484284	deductive reasoning	4
+wd:Q2478058	reconstruction	4
+wd:Q3984452	terminus ante quem	4
+wd:Q5432619	false	4
+wd:Q15729048	pending investigation	4
+wd:Q16189205	surroundings	4
+wd:Q16886573	implausibility	4
+wd:Q17300027	hijacked journal	4
+wd:Q19426560	Después	4
+wd:Q25895909	cannot be confirmed by other sources	4
+wd:Q28962310	rarely	4
+wd:Q29998666	error in referenced source or sources	4
+wd:Q31884622	Q31884622	4
+wd:Q38173183	specified date of Julian calendar	4
+wd:Q41755623	incorrect value	4
+wd:Q115464513	unspecified value	4
+wd:Q7061	12th century	3
+wd:Q12013	Google Maps	3
+wd:Q17949	falsity	3
+wd:Q40927	1850s	3
+wd:Q82821	tradition	3
+wd:Q178651	interview	3
+wd:Q185688	lunar calendar	3
+wd:Q230773	Q230773	3
+wd:Q388505	missing person	3
+wd:Q827597	pseudepigraph	3
+wd:Q1050305	Confirmed Dead	3
+wd:Q1255828	controversy	3
+wd:Q1332286	forgery	3
+wd:Q1366722	final	3
+wd:Q1373131	signature	3
+wd:Q2132119	attribution	3
+wd:Q6136054	guess	3
+wd:Q6878417	missing data	3
+wd:Q15989253	part	3
+wd:Q20734200	not completed	3
+wd:Q20871770	north wall	3
+wd:Q28962312	often	3
+wd:Q59496158	not yet determined	3
+wd:Q70918737	former attribution	3
+wd:Q84761689	less	3
+wd:Q100349848	partially	3
+wd:Q105642994	text exceeds character limit	3
+wd:Q123383098	almost equal to	3
+wd:Q125227128	intercalated	3
+wd:Q2087	1916	2
+wd:Q6679	1492	2
+wd:Q7678	1690	2
+wd:Q7683	1770	2
+wd:Q8095	5th century	2
+wd:Q8436	family	2
+wd:Q12138	Gregorian calendar	2
+wd:Q23445	black	2
+wd:Q25641	300	2
+wd:Q36870	first language	2
+wd:Q43812	passport	2
+wd:Q48183	German Wikipedia	2
+wd:Q188572	fact	2
+wd:Q194235	lunisolar calendar	2
+wd:Q204854	première	2
+wd:Q231158	assignment	2
+wd:Q273570	École des chartes	2
+wd:Q308678	habilitation	2
+wd:Q475476	diptych	2
+wd:Q693726	death in absentia	2
+wd:Q1130275	Swedish calendar	2
+wd:Q1297822	copyright	2
+wd:Q1322263	place of birth	2
+wd:Q1361758	publication date	2
+wd:Q1640824	inscription	2
+wd:Q1729626	Karithaios Painter	2
+wd:Q1784021	artwork copy	2
+wd:Q1939539	concurrent estate	2
+wd:Q2339007	Après	2
+wd:Q2344557	missing in action	2
+wd:Q2534525	chairman of the executive board	2
+Showing 1 to 200 of 629 rows
+rows per page
+
+    ‹
+    1
+    2
+    3
+    4
+    ›
+

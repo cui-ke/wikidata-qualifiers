@@ -1,0 +1,282 @@
+Do you need help creating a query? You can build queries without having to write SPARQL in the new Query Builder.
+Wikidata Query Service
+
+    English
+
+1
+
+#Cats
+
+2
+
+SELECT   ?sv ?svLabel (count(?stmt) as ?cs) # ?item ?itemLabel
+
+3
+
+WHERE
+
+4
+
+{ # ?item p:P571 ?stmt.
+
+5
+
+  ?stmt 
+
+6
+
+  pq:P5102 
+
+7
+
+  #pq:P1480
+
+8
+
+  ?sv
+
+9
+
+        # wd:Q5727902
+
+10
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+
+11
+
+}
+
+12
+
+group by ?sv ?svLabel
+
+13
+
+order by desc(?cs )
+
+14
+
+ # limit 111
+
+    Table
+
+    461 results in 9 ms  
+
+    Download
+    Link
+
+sv
+	
+svLabel
+	
+cs
+wd:Q53737447	originally	12280
+wd:Q230768	attribution	4664
+wd:Q41719	hypothesis	3392
+wd:Q28962312	often	2730
+wd:Q32188232	allegedly	1593
+wd:Q30230067	possibly	1345
+wd:Q50376823	expected	1138
+wd:Q91013007	mainly	1083
+wd:Q18912752	disputed	1042
+wd:Q28962310	rarely	995
+wd:Q4676846	acting	985
+wd:Q5727902	circa	959
+wd:Q18603603	hypothetically	888
+wd:Q37113960	estimate	752
+wd:Q29509080	unofficial	623
+wd:Q29509043	official	503
+wd:Q110143752	sometimes	502
+wd:Q18122778	presumably	481
+wd:Q3918409	proposal	462
+wd:Q104378399	dubious	452
+wd:Q712144	de facto	416
+wd:Q116142274	illegal mark	349
+wd:Q132555	de jure	333
+wd:Q56644435	probably	294
+wd:Q100349848	partially	287
+wd:Q27058	approximation	276
+wd:Q59864995	optional	269
+wd:Q10578722	maximum	162
+wd:Q96102817	out-of-universe perspective	154
+wd:Q10585806	minimum	150
+wd:Q28831311	unconfirmed	130
+wd:Q68575046	instances have exactly one value	109
+wd:Q4895105	interim	96
+wd:Q70918737	former attribution	95
+wd:Q2796622	mean	89
+wd:Q64447881	sample credit	89
+wd:Q188577	consensus decision-making	88
+wd:Q96102813	in-universe perspective	84
+wd:Q47035128	greater than	77
+wd:Q202785	average	75
+wd:Q17125668	self-proclaimed	69
+wd:Q13649246	uncertainty	66
+wd:Q55935291	greater than or equal to	65
+wd:Q404	HTTP 404	56
+wd:Q110290991	no earlier than	55
+wd:Q114980101	defining quality	44
+wd:Q1520777	certainty	42
+wd:Q55713864	Q55713864	42
+wd:Q3089219	maritime boundary	40
+wd:Q115211583	determined by the player	40
+wd:Q187631	mathematical interpolation	39
+wd:Q744069	mathematical extrapolation	34
+wd:Q52834024	less than	33
+wd:Q55935272	less than or equal to	33
+wd:Q965330	project management estimation	32
+wd:Q110418529	value split up, due to exceeding the 1,500 character limit on strings	32
+wd:Q3962655	opinion	31
+wd:Q105223969	non-standard	31
+wd:Q48890	college basketball	26
+wd:Q16582801	uncredited appearance	25
+wd:Q99841874	non-canon	24
+wd:Q112883215	incidental	24
+wd:Q774228	design requirement	23
+wd:Q83489981	finished	22
+wd:Q110290992	no later than	22
+wd:Q105564935	supplied title	20
+wd:Q2969701	Castle of Leiria	15
+wd:Q104603903	ongoing	14
+wd:Q44342	legend	12
+wd:Q464980	exhibition	12
+wd:Q107356532	obsolete	12
+wd:Q63971158	earliest recorded instance	11
+wd:Q90177495	does not always apply	11
+wd:Q107217620	unsubstantiated	11
+wd:Q855395	interpretation	10
+wd:Q10300821	Capela de São Pedro	10
+wd:Q19357312	accusation	10
+wd:Q21818619	near	10
+wd:Q24025284	sometimes changes	10
+wd:Q59496158	not yet determined	10
+wd:Q137816	Taiwan under Japanese rule	9
+wd:Q319141	conjecture	9
+wd:Q53815	canon	8
+wd:Q593147	Alcobaça Monastery	8
+wd:Q603908	to be announced	8
+wd:Q2839009	allegation	8
+wd:Q20734200	not completed	8
+wd:Q20820099	de jure/de facto	8
+wd:Q101437313	archive footage	8
+wd:Q29627	public interest	7
+wd:Q56019	military rank	7
+wd:Q101072	definition	7
+wd:Q226995	median	7
+wd:Q877353	indirect election	7
+wd:Q2111082	seasonality	7
+wd:Q18603648	contributing factor	7
+wd:Q30232378	married name	7
+wd:Q112627455	generally used form	7
+wd:Q1362939	distance learning education	6
+wd:Q84590041	name change	6
+wd:Q218005	sum	5
+wd:Q652476	retrospective diagnosis	5
+wd:Q1079023	championship	5
+wd:Q1376230	maiden name	5
+wd:Q1395509	posthumous	5
+wd:Q15104814	land boundary	5
+wd:Q64728694	proposed entity	5
+wd:Q113326371	metaphor	5
+wd:Q115455199	indirect	5
+wd:Q61002	pseudonym	4
+wd:Q201413	heuristic	4
+wd:Q201676	funeral	4
+wd:Q216169	execution by firing squad	4
+wd:Q311290	sui generis	4
+wd:Q367293	convention	4
+wd:Q517361	retroactive continuity	4
+wd:Q693726	death in absentia	4
+wd:Q1309409	unanimity	4
+wd:Q3739281	fanon	4
+wd:Q4445088	perpetrator	4
+wd:Q29933858	territorial claim	4
+wd:Q30108381	cancelled	4
+wd:Q40719727	beginning of	4
+wd:Q45406573	one-to-many	4
+wd:Q64473030	uncleared sample credit	4
+wd:Q105334701	loan	4
+wd:Q8445	marriage	3
+wd:Q77852	spoiler	3
+wd:Q174779	Batalha Monastery	3
+wd:Q209896	honorary degree	3
+wd:Q748250	prediction	3
+wd:Q811683	proposed building or structure	3
+wd:Q841440	naturalization	3
+wd:Q1630279	guideline	3
+wd:Q2285706	head of government	3
+wd:Q3320743	title of honor	3
+wd:Q4695151	ahistoricism	3
+wd:Q5358065	professional basketball	3
+wd:Q26961029	statement with Gregorian date earlier than 1584	3
+wd:Q40719766	end of	3
+wd:Q45123627	declared deserted	3
+wd:Q60070514	approximately	3
+wd:Q66814186	Pelourinho de Redinha	3
+wd:Q71536081	referenced value	3
+wd:Q80122004	superseded by later scholarship or research	3
+wd:Q96943145	caretaker	3
+wd:Q106466760	manipulation	3
+wd:Q106708740	in fiction	3
+wd:Q115667526	depends on jurisdiction	3
+wd:Q116822097	parodic	3
+wd:Q118384519	information from a forged document	3
+wd:Q121373390	Q121373390	3
+wd:Q5151	month	2
+wd:Q29485	error	2
+wd:Q30612	clinical trial	2
+wd:Q41075	civil union	2
+wd:Q43115	saint	2
+wd:Q69883	urban planning	2
+wd:Q83367	Tanakh	2
+wd:Q191062	mnemonic	2
+wd:Q357662	work in process	2
+wd:Q486983	academic rank	2
+wd:Q560361	draft document	2
+wd:Q706848	accessory	2
+wd:Q720243	bigamy	2
+wd:Q791801	estimation	2
+wd:Q1193907	link rot	2
+wd:Q1219996	confession by suspect	2
+wd:Q1236807	URL redirection	2
+wd:Q1321906	open problem	2
+wd:Q1322263	place of birth	2
+wd:Q1784021	artwork copy	2
+wd:Q2141246	sabbatical	2
+wd:Q3144351	scientific hypothesis	2
+wd:Q3840054	Luigi Primo	2
+wd:Q5116937	Sanctuary of Our Lady of Nazaré	2
+wd:Q6136054	guess	2
+wd:Q6776685	impermanence	2
+wd:Q9695616	Capela de Nossa Senhora do Desterro	2
+wd:Q15893266	former entity	2
+wd:Q17024293	misunderstanding	2
+wd:Q18706315	hypothetical entity	2
+wd:Q22979588	source known to be unreliable	2
+wd:Q25895909	cannot be confirmed by other sources	2
+wd:Q27136782	start of manufacturing	2
+wd:Q45025362	replaced entity	2
+wd:Q54835811	average	2
+wd:Q60503972	posthumous	2
+wd:Q60614352	uncredited musical artist	2
+wd:Q64467983	legal credit	2
+wd:Q69652498	inferred from person's given name	2
+wd:Q70650920	dubious role	2
+wd:Q74524855	most frequent value	2
+wd:Q97284968	presumed death	2
+wd:Q106708760	in reality	2
+wd:Q115471214	the object is the same as the subject	2
+wd:Q115630159	statement applies to the Wikidata item, not the concept represented by the item	2
+wd:Q124320539	Christian religious position	2
+wd:Q173	Alabama	1
+wd:Q202	4	1
+Showing 1 to 200 of 461 rows
+rows per page
+
+    ‹
+    1
+    2
+    3
+    ›
+
