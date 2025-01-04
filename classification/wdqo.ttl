@@ -79,16 +79,31 @@ Typical examples: ...
 # http://purl.org/wdqo#Field_of_a_Structure
 
 <http://purl.org/wdqo#Field_of_a_Structure> a owl:Class ;
-	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> .
-# 
-# http://purl.org/wdqo#Field_of_a_Subject_Structure
+	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> ;
+	rdfs:comment """When the object of a statement is an entity that is not a Wd item and that must be described by several fields. In this situation, if one does not want to create a proper entity, the technique consists in creating a statement that has one of the fields as object and the others as qualifiers.
 
-<http://purl.org/wdqo#Field_of_a_Subject_Structure> a owl:Class ;
+Examples
+
+- the apparent magnitude of an astronomical object is a pair (brightness, wavelength filter), it is represented as 
+    (astronomical object, apparent magnitude, brightness-value)[astronomical filter: wavelength filter]
+the object of the statement is the brightness and the filter is given by the atronomical filter qualifer.
+- the genomic start and end of a gene is a number and a  chromosome identifier
+- the catalog code} of some entity is a string together with a  catalog identifier 
+- the boiling point of a substance is a number (temperature) and a pressure {under pressure)
+
+Without this information the statement does not make sense, except if there is a well-known default value. 
+- the statement (2004 Tour de France Stage 11, stage classification, Juan Antonio Flecha) [rank: 2]) would be meaningless without the rank: 2 qualification. Without rank: 2 the information brought by the statement is limited to: Juan Antonio Flecha participated in 2004 Tour de France, Stage 11}, which is certainly not the intended meaning of the classification} property.
+
+Many of these qualifiers have a very low diversity index, i.e. they are very specific to a property. For instance, \\textsf{astronomical filter} qualifies almost exclusively \\textsf{apparent magnitude}""" .
+# 
+# http://purl.org/wdqo#Field_of_a_Structured_Subject
+
+<http://purl.org/wdqo#Field_of_a_Structured_Subject> a owl:Class ;
 	rdfs:subClassOf <http://purl.org/wdqo#Field_of_a_Structure> .
 # 
-# http://purl.org/wdqo#Field_of_a_Value_Structure
+# http://purl.org/wdqo#Field_of_a_Structured_Value
 
-<http://purl.org/wdqo#Field_of_a_Value_Structure> a owl:Class ;
+<http://purl.org/wdqo#Field_of_a_Structured_Value> a owl:Class ;
 	rdfs:subClassOf <http://purl.org/wdqo#Field_of_a_Structure> .
 # 
 # http://purl.org/wdqo#Metalanguage_to_define_Category_List_Constraint
@@ -150,26 +165,6 @@ Typical examples
 <http://purl.org/wdqo#Spatial_Context> a owl:Class ;
 	rdfs:subClassOf <http://purl.org/wdqo#Context> .
 # 
-# http://purl.org/wdqo#Structured_Value_Definition
-
-<http://purl.org/wdqo#Structured_Value_Definition> a owl:Class ;
-	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> ;
-	rdfs:comment """When the object of a statement is an entity that is not a Wd item and that must be described by several fields. In this situation, if one does not want to create a proper entity, the technique consists in creating a statement that has one of the fields as object and the others as qualifiers.
-
-Examples
-
-- the apparent magnitude of an astronomical object is a pair (brightness, wavelength filter), it is represented as 
-    (astronomical object, apparent magnitude, brightness-value)[astronomical filter: wavelength filter]
-the object of the statement is the brightness and the filter is given by the atronomical filter qualifer.
-- the genomic start and end of a gene is a number and a  chromosome identifier
-- the catalog code} of some entity is a string together with a  catalog identifier 
-- the boiling point of a substance is a number (temperature) and a pressure {under pressure)
-
-Without this information the statement does not make sense, except if there is a well-known default value. 
-- the statement (2004 Tour de France Stage 11, stage classification, Juan Antonio Flecha) [rank: 2]) would be meaningless without the rank: 2 qualification. Without rank: 2 the information brought by the statement is limited to: Juan Antonio Flecha participated in 2004 Tour de France, Stage 11}, which is certainly not the intended meaning of the classification} property.
-
-Many of these qualifiers have a very low diversity index, i.e. they are very specific to a property. For instance, \\textsf{astronomical filter} qualifies almost exclusively \\textsf{apparent magnitude}""" .
-# 
 # http://purl.org/wdqo#Subject_Modifier
 
 <http://purl.org/wdqo#Subject_Modifier> a owl:Class ;
@@ -194,6 +189,11 @@ Examples:
 
 - subject has role, e.g. (Falk Kalamorz, employer, Institute for Crop and Food Research)[subject has role: scientist]""" .
 # 
+# http://purl.org/wdqo#Subproperty
+
+<http://purl.org/wdqo#Subproperty> a owl:Class ;
+	rdfs:subClassOf <http://purl.org/wdqo#Additional_Information> .
+# 
 # http://purl.org/wdqo#Temporal_Context
 
 <http://purl.org/wdqo#Temporal_Context> a owl:Class ;
@@ -205,9 +205,9 @@ Examples:
 	rdfs:subClassOf <http://purl.org/wdqo#Qualifier> ;
 	rdfs:comment """The certainty, probability, etc. of the statement 
 
-Direct epistemic qualifiers
+Direct uncertainty qualifiers
 
-- sourcing circumstances (P1480)} qualifies accuracy, reliability, confidence, precision, certainty of a statement (with values such as advertising, folklore, doubt, approximation, falsity, ..., ); 
+- sourcing circumstances (P1480)} qualifies accuracy, reliability, confidence, precision, certainty of a statement (with values such as advertising, folklore, doubt, approximation, falsity, ..., ); Main use: with value 'circa'
 - nature of statement (P5102) } (hypothesis, allegation, de jure, de facto, ...) 
 
 These qualifiers do not define a validity context, this dimension is orthogonal to validity

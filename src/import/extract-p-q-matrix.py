@@ -1,3 +1,15 @@
+# Extract the property-qualifier matrix from a wikidata json dump
+
+"""
+input: a wikidata json dump (in std input)
+output: 
+    mat-p-q.json
+        on each line : <property> : {<qualifier>: <frequency>, ...}
+    p|q-count.json
+        on each line : <property>|<qualifier> : <frequency>
+
+"""
+
 import sys
 import json
 
