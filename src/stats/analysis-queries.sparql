@@ -1,0 +1,27 @@
+# Qualifier values
+SELECT distinct  ?val ?valLabel
+WHERE
+{
+  ?stmt pq:PXXXX ?val .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". } # Helps get the label in your language, if not, then default for all languages, then en language
+}
+limit 25
+
+# Qualifier usage example
+SELECT distinct ?item ?val ?valLabel ?qvalLabel
+WHERE
+{
+  ?stmt pq:PXXXX ?qval .
+  ?item p:PYYY ?stmt . ?stmt ps:PYYY ?val
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". } # Helps get the label in your language, if not, then default for all languages, then en language
+}
+limit 25
+
+# Property usage example
+SELECT distinct ?item ?itemLabel ?val ?valLabel
+WHERE
+{
+  ?item p:PYYY ?stmt . ?stmt ps:PYYY ?val
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". } # Helps get the label in your language, if not, then default for all languages, then en language
+}
+limit 25

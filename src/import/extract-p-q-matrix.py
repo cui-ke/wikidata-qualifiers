@@ -8,6 +8,8 @@ output:
     p|q-count.json
         on each line : <property>|<qualifier> : <frequency>
 
+usage: bzip2 -dk wikidata-dump.json.bz2 | python path-to-extract-p-q-matrix.py
+
 """
 
 import sys

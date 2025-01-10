@@ -1,6 +1,10 @@
 """
 Compute the diversity indexes for the qualifiers
 
+usage:
+
+    python3 diversity_index.py q_p_freq.json q_freq.json p_freq.json prop_names.json
+
 output: for each qualifier several diversity indexes 
     currently:
         - the Hill number of order 1, which is exp(Shannon diversity index)
@@ -25,22 +29,22 @@ import json
 import sys
 import math
 
-PROP_NAMES = 'property_names.json'
-STMT_BY_PROP = 'stmtByProperty.json'
-STMT_BY_QUAL = 'stmtByQualifier.json'
-STMT_BY_PQ = 'stmtByPropertyByQualifier.json'
+PROP_NAMES = sys.argv[4] # 'property_names.json'
+PROP_FREQ = sys.argv[3] # 'stmtByProperty.json'
+QUAL_FREQ = sys.argv[2] # 'stmtByQualifier.json'
+Q_P_FREQ = sys.argv[1] # 'stmtByPropertyByQualifier.json'
 
 with open(PROP_NAMES) as pnmf :
     pname = json.load(pnmf)
 
-with open(STMT_BY_PROP) as fpf :
+with open(PROP_FREQ) as fpf :
     fp = json.load(fpf)
 
-with open(STMT_BY_QUAL) as fqf :
+with open(QUAL_FREQ) as fqf :
     fq = json.load(fqf)
 
-with open(STMT_BY_PQ) as fpqf :
-    f = json.load(fpqf)
+with open(Q_P_FREQ) as fqpf :
+    f = json.load(fqpf)
 
 divsh = {}
 divshn = {}

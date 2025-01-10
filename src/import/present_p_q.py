@@ -5,14 +5,15 @@ in a json-capable web browser
 - for a qualifier the properties are ordered by decreasing frequency
 - URI are added to provide a one-click access to the property definitions
 
-usage: python present_p_q.py stmt-by-property-by-qualif-file stmt-by-qualifier-file prop-names-file
+usage: python present_p_q.py qualifier-property-frequency.json qualifier-freq.json prop-names.json
 """
 import json
 import sys
 
+sbpbq = json.load(open(sys.argv[1]))
 pname = json.load(open(sys.argv[3]))
 sbq = json.load(open(sys.argv[2]))
-sbpbq = json.load(open(sys.argv[1]))
+
 
 print('{')
 firstq = ''
