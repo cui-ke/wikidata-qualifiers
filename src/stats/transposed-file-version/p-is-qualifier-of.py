@@ -5,7 +5,7 @@ import csv
 import time
 
 """
- this script count the number of occurrences of a given qualifier for each property
+ this script counts the number of occurrences of a given qualifier for each property
  usage: $ python3 getpropq.py qualifier
 
  1. scans the files Pxxx-qualifiers in stats/ 
