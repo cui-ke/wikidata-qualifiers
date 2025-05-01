@@ -31,7 +31,7 @@ for line in sys.stdin:
                     if len(stmt["qualifiers"]) > 0 :
                         stmt_with_q_c += 1                
                     
-        if entity_c % 10000 == 0:
+        if entity_c % 10 == 0:
             print(f'e: {entity_c}, stmt: {stmt_c}, qualified: {stmt_with_q_c}')
 
 
