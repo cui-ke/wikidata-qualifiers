@@ -4,7 +4,7 @@
 
 src: tools for importing a wikidata copy and computing the quaifier usage frequencies and diversity indexes
 
-stats: results of the stat computation for different versions of wikidata
+stats: results of the statistics computation for different versions of wikidata
 
 classification: qualifier categorization and analysis work (in xlsx files)
 
@@ -19,11 +19,11 @@ classification: qualifier categorization and analysis work (in xlsx files)
 
 2. Extract the {qualifier -> {property -> frequency}}, the {qualifier -> frequency}, and the {property -> frequency} dictionaries
 
-    bzip2 -dkc latest-all.json.bz2 | python3.9 <path-to>/src/import/extract-p-q-matrix.py >extract.out &
+    bzip2 -dkc latest-all.json.bz2 | python3.9 <path-to>/src/import/extract_q-p-freq.py >extract.out &
 
   (wait for ~ 12 hours)
 
-  This gnerates three files: mat-p-q.json, q-count.json, and p-count.json.
+  This gnerates three files: q-p-freq.json, q-freq.json, and p-freq.json.
 
 3. Extract the property names :
    
@@ -37,10 +37,10 @@ classification: qualifier categorization and analysis work (in xlsx files)
 
 4. Generate a browser friendly version of the q->p->frequenciesdictionary (with the qualifier and property names)
 
-    python3 path-to/src/import/present_p_q.py mat-p-q.json q-count.json prop-names.json >present-p-q-freq.json
+    python3 path-to/src/import/gen_view_q-p-freq.py q-p-freq.json q-freq.json prop-names.json >view_q-p-freq.json
 
 5. Compute the diversity indexes
 
-    python3 <path-to>/src/import/diversity_index.py mat-p-q.json q-count.json p-count.json. prop_names.json >q_diversity.csv
+    python3 <path-to>/src/import/diversity_index.py q-p-freq.json q-freq.json p-freq.json. prop_names.json >q_diversity.csv
 
-6. Use q_diversity and present-p-q-freq.json to analyze the qualifiers
+6. Use q_diversity.csv and present-q-p-freq.json to analyze the qualifiers
