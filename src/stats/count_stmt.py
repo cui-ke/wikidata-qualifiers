@@ -5,7 +5,6 @@ input: a wikidata json dump (in std input)
 
 
 usage: bzip2 -dk wikidata-dump.json.bz2 | python path-to-count_stmt.py
-
 """
 
 import sys
