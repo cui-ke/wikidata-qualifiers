@@ -48,8 +48,10 @@ with open(Q_P_FREQ) as fqpf :
 
 divsh = {}
 divshn = {}
+abundance = {}
 
 for q in f:
+    abundance[q] = len(f[q]) # abundance
     sq = sum(f[q].values())
     snq = 0
     for p in f[q]: 
@@ -73,4 +75,4 @@ for q in f:
 for q in sorted(list(fq.keys()), key = lambda x : fq[x], reverse=True):
     name = pname[q] if q in pname else "*** UNKNOWN NAME"
     name = name.replace('"','""')
-    print(f'{q},"{name}",{fq[q]},{divsh[q]},{divshn[q]}')
+    print(f'{q},"{name}",{fq[q]},{divsh[q]},{divshn[q]}, {abundance[q]}')

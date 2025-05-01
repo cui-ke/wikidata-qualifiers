@@ -3,12 +3,14 @@
 """
 input: a wikidata json dump (in std input)
 output: 
-    mat-p-q.json
+    p-q-frequ.json
         on each line : <property> : {<qualifier>: <frequency>, ...}
-    p|q-count.json
-        on each line : <property>|<qualifier> : <frequency>
+    p-freq.json
+        on each line : <property>: <frequency>
+    q-freq.json
+        on each line : <qualifier>: <frequency>
 
-usage: bzip2 -dk wikidata-dump.json.bz2 | python path-to-extract-p-q-matrix.py
+usage: bzip2 -dk wikidata-dump.json.bz2 | python path-to-extract-p-q-freq.py
 
 """
 
@@ -57,9 +59,9 @@ for line in sys.stdin:
                         mat[p][q] += 1 # += len(qualifs[q]) to count the total #occ of each qualifier
 
 print('writing results')
-writedict('mat-p-q.json',mat)
-writedict('p-count.json', pcount)
-writedict('q-count.json', qcount)
+writedict('p-q-freq.json',mat)
+writedict('p-freq.json', pcount)
+writedict('q-freq.json', qcount)
 
 
 
