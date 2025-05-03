@@ -10,7 +10,7 @@ output:
     q-freq.json
         on each line : <qualifier>: <frequency>
 
-usage: bzip2 -dk wikidata-dump.json.bz2 | python path-to-extract-p-q-freq.py
+usage: bzip2 -cdk wikidata-dump.json.bz2 | python path-to-extract-p-q-freq.py
 
 """
 
@@ -34,6 +34,8 @@ qcount = {}
 mat = {}
 ci = 0 # line count
 
+max_repeat = 0
+
 for line in sys.stdin:
     if len(line) > 2:
         ci += 1
@@ -53,15 +55,15 @@ for line in sys.stdin:
                 if "qualifiers" in claim:
                     qualifs = claim["qualifiers"]                
                     for q in qualifs:
-                        if q not in qcount : qcount[q] = 0
-                        qcount[q] += 1 # += len(qualifs[q]) to count the total #occ of each qualifier
-                        if q not in mat[p] : mat[p][q] = 0
-                        mat[p][q] += 1 # += len(qualifs[q]) to count the total #occ of each qualifier
+                        #if q not in qcount : qcount[q] = 0
+                        #qcount[q] += 1 # += len(qualifs[q]) to count the total #occ of each qualifier
+                        #if q not in mat[p] : mat[p][q] = 0
+                        #mat[p][q] += 1 # += len(qualifs[q]) to count the total #occ of each qualifier
+                        if len(qualifs[q]) > max_repeat :
+                            max_repeat = len(qualifs[q])
+                            print(f'{j["id"]} - {p} - {q} : {max_repeat}')
 
-print('writing results')
-writedict('p-q-freq.json',mat)
-writedict('p-freq.json', pcount)
-writedict('q-freq.json', qcount)
+
 
 
 
