@@ -376,3 +376,32 @@ values (?rx ?x) {
 group by ?rx  ?x ?desc_contains_stmt ?desc_contains_qualif ?ui_contains_stmt ?ui_contains_qualif
 order by ?rx
 # limit 64
+
+
+# Check if the qualifier ?q is allowed as qualifier of the properties ?prop. 
+
+SELECT ?q ?spc
+WHERE {
+  VALUES (?q) {(wdt:P122)}
+  VALUES (?prop) {(wd:P580) (wd:PP582) ( wd:P5102) ( wd:P1480) ( wd:P642) ( wd:P585) ( wd:P805) ( wd:P2241) ( wd:P518) ( wd:P459) ( wd:P53) ( wd:P92) ( wd:P7452) ( wd:P361) ( wd:P1706) ( wd:P828) ( wd:P1534)
+  }
+ 
+  ?prop wdt:P2302 wd:Q21510851. # there is a qual. allowed constraint
+  
+  OPTIONAL 
+  {?prop p:P2302 ?spc . ?spc ps:P2302 wd:Q21510851 . 
+    ?spc pq:P2306 ?q
+  }
+  #?st  pq:P123 ?pub . ?st ?prop ?vprop #   ?item p:P1082 ?s. ?s ps:P1082 ?opo. ?s pq:P123 ?pub.
+  #                        filter(strstarts(str(?prop), "http://www.wikidata.org/prop/statement/"))
+  #SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". } # Helps get the label in your language, if not, then default for all languages, then en language
+}
+
+# Find the properties qualified by q
+
+SELECT ?p (COUNT(?stmt) AS ?nbstmt)
+{ VALUES (?q) {(pq:P585)}
+  ?stmt ?q ?qv ; ?p ?pv .
+  FILTER(STRSTARTS(STR(?p),"http://www.wikidata.org/prop/statement/"))
+}
+GROUP BY ?p
