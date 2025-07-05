@@ -53,7 +53,7 @@ for line in sys.stdin:
             for claim in claims[p]:
                 if "rank" in claim and claim["rank"] == "deprecated":
                     depi += 1
-                elif "qualifiers" in claim:
+                elif "qualifiers" in claim: 
                     qualifs = claim["qualifiers"]                
                     for q in qualifs:
                         if q not in qcount : qcount[q] = 0
