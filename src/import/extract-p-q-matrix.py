@@ -46,7 +46,7 @@ for line in sys.stdin:
         # print(j['id'])
 
         claims = j["claims"] if "claims" in j else {}
-        cli += len(claims)
+
         for p in claims:
             if p not in mat : mat[p] = {}
             if p not in pcount : pcount[p] = 0
