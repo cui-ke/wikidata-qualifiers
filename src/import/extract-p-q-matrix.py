@@ -33,11 +33,12 @@ pcount = {}
 qcount = {}
 mat = {}
 ci = 0 # line count
+depi = 0 # deprecated count
 
 for line in sys.stdin:
     if len(line) > 2:
         ci += 1
-        if ci % 1000 == 0 : print(f"{ci:,}")
+        if ci % 1000 == 0 : print(f"{ci:,} ({depi})")
         ls = line.strip()
         while ls[-1] != '}' : ls = ls[:-1]
         j = json.loads(ls)
@@ -50,7 +51,9 @@ for line in sys.stdin:
             if p not in pcount : pcount[p] = 0
             pcount[p] += len(claims[p])
             for claim in claims[p]:
-                if "qualifiers" in claim:
+                if "rank" in claim and claim["rank"] == "deprecated":
+                    depi += 1
+                elif "qualifiers" in claim:
                     qualifs = claim["qualifiers"]                
                     for q in qualifs:
                         if q not in qcount : qcount[q] = 0
