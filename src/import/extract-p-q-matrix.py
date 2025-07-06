@@ -10,7 +10,7 @@ output:
     q-freq.json
         on each line : <qualifier>: <frequency>
 
-usage: bzip2 -cdk wikidata-dump.json.bz2 | python path-to-extract-p-q-freq.py
+usage: lbzip2 -cdk wikidata-dump.json.bz2 | python path-to-extract-p-q-freq.py
 
 """
 
