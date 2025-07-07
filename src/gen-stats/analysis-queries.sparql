@@ -405,3 +405,26 @@ SELECT ?p (COUNT(?stmt) AS ?nbstmt)
   FILTER(STRSTARTS(STR(?p),"http://www.wikidata.org/prop/statement/"))
 }
 GROUP BY ?p
+
+# for each property check if it's allowed as qualifer, if it has Qualifier in a property scope restriction,
+#  if it has a property scope constraint
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX p: <http://www.wikidata.org/prop/>
+PREFIX ps: <http://www.wikidata.org/prop/statement/>
+PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
+SELECT ?p ?allowed ?pscQualif ?scopeQualif
+{
+?p wikibase:qualifier ?q . # only look for qualifiers
+ OPTIONAL { ?p p:P2302 ?sc . ?sc ps:P2302 wd:Q53869507 .  # property scope consraint
+ 	     MINUS { ?sc pq:P5314 wd:Q54828449 . } # not allowing qualifiers
+ 	     MINUS { ?sc pq:P4680 ?scope . } # no scope for this Constraint
+	     MINUS { ?sc wikibase:rank wikibase:DeprecatedRank . } # not deprecated
+	     BIND ( "NO" as ?allowed ) } # not allowed as qualifier
+ OPTIONAL { ?p p:P2302 ?sc . ?sc ps:P2302 wd:Q53869507 .  # property scope consraint
+         ?sc pq:P5314 wd:Q54828449 .
+         BIND("YES" as ?pscQualif) }
+ OPTIONAL { ?p p:P2302 ?sc . ?sc ps:P2302 wd:Q53869507 .  # property scope consraint
+         ?sc pq:P4680 ?scopeQualif . }
+              
+}
