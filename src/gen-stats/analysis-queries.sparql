@@ -417,17 +417,27 @@ PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX p: <http://www.wikidata.org/prop/>
 PREFIX ps: <http://www.wikidata.org/prop/statement/>
 PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
-SELECT DISTINCT ?p #?allowed ?pscQualif ?scopeQualif
+SELECT DISTINCT ?p 
 {
 ?p wikibase:qualifier ?q . # only look for qualifiers
-# ?s ?q ?v .  # statement qualification
-# MINUS { ?i p:P2271 ?s . } # not in Wikidata property example for properties
-# MINUS { ?i p:P1855 ?s . } # not in Wikidata property example
-# MINUS { ?s wikibase:rank wikibase:DeprecatedRank . } # not deprecated
  OPTIONAL { ?p p:P2302 ?sc . ?sc ps:P2302 wd:Q53869507 .  # property scope consraint
  	     MINUS { ?sc pq:P5314 wd:Q54828449 . } # not allowing qualifiers
  	     MINUS { ?sc pq:P4680 ?scope . } # no scope for this Constraint
 	     MINUS { ?sc wikibase:rank wikibase:DeprecatedRank . } # not deprecated
 	     BIND ( "NO" as ?allowed ) } # not allowed as qualifier
 FILTER(! BOUND(?allowed))   
+}
+
+# Properties p that have an Allowed qualifiers constraint
+# together with the allowed qualifiers q
+
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX p: <http://www.wikidata.org/prop/>
+PREFIX ps: <http://www.wikidata.org/prop/statement/>
+PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
+
+SELECT ?p ?q
+{  ?p wikibase:qualifier ?pq . # select all properties
+   ?p p:P2302 ?sc . ?sc ps:P2302 wd:Q21510851 .  ?sc pq:P2306 ?q 
 }
