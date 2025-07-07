@@ -73,6 +73,7 @@ for q in f:
     divshn[q] = idxn
 
 for q in sorted(list(fq.keys()), key = lambda x : fq[x], reverse=True):
-    name = pname[q] if q in pname else "*** UNKNOWN NAME"
-    name = name.replace('"','""')
-    print(f'{q},"{name}",{fq[q]},{divsh[q]},{divshn[q]}, {abundance[q]}')
+    if q in f:
+        name = pname[q] if q in pname else "*** UNKNOWN NAME"
+        name = name.replace('"','""')
+        print(f'{q},"{name}",{fq[q]},{divsh[q]},{divshn[q]}, {abundance[q]}')

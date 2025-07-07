@@ -9,11 +9,23 @@ usage: python present_p_q.py qualifier-property-frequency.json qualifier-freq.js
 """
 import json
 import sys
+import csv
 
 sbpbq = json.load(open(sys.argv[1]))
 pname = json.load(open(sys.argv[3]))
 sbq = json.load(open(sys.argv[2]))
 
+allowedq = {}
+if len(sys.argv) > 4:
+    with open(sys.argv[4], mode='r') as file:
+        csv_reader = csv.reader(file)
+        for row in csv_reader:
+            if row[0] not in  allowedq : 
+                allowedq[row[0]] = set([row[1]])
+            else:
+                allowedq[row[0]].add(row[1])
+
+# print(f"***{allowedq}") #chk
 
 print("""<html><body>""")
 print("""<table>""")
@@ -32,8 +44,12 @@ for q in sorted(list(sbpbq.keys()), key = lambda x : sbq[x], reverse = True):
         first = ','
         for p in sorted( list(sbpbq[q].keys()), key = lambda x : sbpbq[q][x], reverse=True):
             pn  = pname[p].replace('"','\\"') if p in pname else '*** UNKNOWN NAME '+p
+            if p in allowedq and q not in allowedq[p]:
+                 attr = 'bgcolor="red"'
+            else:
+                attr =''
             #print(f"""{first} "{p:.<6}.{sbpbq[q][p]:.>9}  {pn}": "https://www.wikidata.org/wiki/Property:{p}" """)
-            print(f"""<tr><td>{p}</td><td align="right">{sbpbq[q][p]}</td><td><a href="https://www.wikidata.org/wiki/Property:{p}">{pn}</a></td></tr>""")
+            print(f"""<tr><td {attr}>{p}</td><td align="right">{sbpbq[q][p]}</td><td><a href="https://www.wikidata.org/wiki/Property:{p}">{pn}</a></td></tr>""")
             first = ','
         print("</table></td>")
         print("</tr>")
