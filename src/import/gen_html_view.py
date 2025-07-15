@@ -5,7 +5,13 @@ Create an thml file from a Q -> (P -> nb stmt) dictionary that is suitable for p
 - for a qualifier the properties are ordered by decreasing frequency
 - URI are added to provide a one-click access to the property definitions
 
-usage: python present_p_q.py qualifier-property-frequency.json qualifier-freq.json prop-names.json
+If a file with the allowed qualifiers is provided, highlight the errors = qualifiers that qualify a property
+not allowing this qualifier. Each line of the file contains a property and an allowed qualifier. Properties
+not appearing in the file have no qualifier constraints.
+
+usage: 
+python present_p_q.py qualifier-property-frequency.json qualifier-freq.json prop-names.json [allowed.csv]
+
 """
 import json
 import sys

@@ -53,16 +53,16 @@ classification: qualifier categorization and analysis work (in xlsx files)
     python3 path-to/src/import/gen_html_view.py q-p-freq.json q-freq.json prop-names.json >view_q-p-freq.html
 
     To obtain a view that shows the Allowed qualifiers constraint violation.
-    Generate a csv file with the allowed qualifiers for each property (properties without constraint must not appear)
+    a. Generate a csv file with the allowed qualifiers for each property (properties without constraint must not appear)
 
     SELECT ?p ?q
     {  ?p wikibase:qualifier ?pq . # select all properties
        ?p p:P2302 ?sc . ?sc ps:P2302 wd:Q21510851 .  ?sc pq:P2306 ?q 
     }
 
-    Run gen_html_view.py with this file as last parameter
+    b. Run gen_html_view.py with this file as last parameter
 
-5. Generate the liste of globally allowed qualifiers
+5. Generate the list of globally allowed qualifiers
    
    Theese are properties that are not explicitly dissalowed as qualifiers
 
