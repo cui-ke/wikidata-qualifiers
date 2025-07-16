@@ -2,6 +2,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sys
 
+plt.rcParams['font.size'] = 18           # Default font size
+plt.rcParams['axes.titlesize'] = 14      # Title font size
+plt.rcParams['axes.labelsize'] = 20      # Axis label font size
+plt.rcParams['xtick.labelsize'] = 20     # X-tick label size
+plt.rcParams['ytick.labelsize'] = 20     # Y-tick label size
+plt.rcParams['legend.fontsize'] = 20     # Legend font size
+
+
 def create_pie_chart_from_csv(csv_file, category_column, value_column, 
                             title='Pie Chart', colors=None, 
                             output_file=None, dpi=300):
@@ -47,16 +55,18 @@ def create_pie_chart_from_csv(csv_file, category_column, value_column,
         autopct=absolute_value, # '%1.1f%%', 
         startangle=70,
         colors=data["Color"], #colors,
-        textprops={'fontsize': 12},
+        textprops={'fontsize': 24},
         pctdistance=0.85,
         radius=1,
         counterclock=False,
         wedgeprops = {'linewidth': 0.5, 'linestyle': '-', 'edgecolor': 'white'}
     )
-    
+    for autotext in autotexts:
+        autotext.set_fontsize(44)  # Larger font for percentages
+
     # Improve label appearance
     plt.setp(autotexts, size=20, weight="bold")
-    plt.setp(texts, size=12)
+    plt.setp(texts, size=22)
     
     # Add white circle in center to make it a donut chart (optional)
     #centre_circle = plt.Circle((0,0), 0.70, fc='white')
