@@ -31,8 +31,9 @@ classification: qualifier categorization and analysis work (in xlsx files)
 
     python3 <<path-to>>/src/import/transpose_rmex_p_q.py < p-q-freq.json > q-p-freq.json # or transpose_p_q.py
 
-  Generate the q-p-f by transposing p-q-f
-  The rmex version removes the 'Wikidata example ...' properties (not a real qualification use)
+  Generates the {qualifier -> {property -> frequency}} dictionary by 
+    - transposing p-q-freq (the property -> {qualifier -> frequency}) dictionary 
+    - removing the examples (i.e disregarding the 'Wikidata example ...' properties)
 
 
 3. Generate a browser friendly version of the q->p->frequencies dictionary (with the qualifier and property names)
@@ -49,4 +50,5 @@ classification: qualifier categorization and analysis work (in xlsx files)
 
     python3 <<path-to>>/src/import/diversity_index.py q-p-freq.json q-freq.json p-freq.json  >q_diversity.csv
 
-2. Use q_diversity.csv and view_q-p-freq.html to analyze the qualifiers
+
+Now you can use q_diversity.csv and view_q-p-freq.html to analyze the qualifiers
