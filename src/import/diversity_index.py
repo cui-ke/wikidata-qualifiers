@@ -28,14 +28,16 @@ output: for each qualifier several diversity indexes
 import json
 import sys
 import math
+from wdQueries import get_prop_names
 
-PROP_NAMES = sys.argv[4] # 'property_names.json'
+# PROP_NAMES = sys.argv[4] # 'property_names.json'
 PROP_FREQ = sys.argv[3] # 'stmtByProperty.json'
 QUAL_FREQ = sys.argv[2] # 'stmtByQualifier.json'
 Q_P_FREQ = sys.argv[1] # 'stmtByPropertyByQualifier.json'
 
-with open(PROP_NAMES) as pnmf :
-    pname = json.load(pnmf)
+#with open(PROP_NAMES) as pnmf :
+#    pname = json.load(pnmf)
+pname = get_prop_names()
 
 with open(PROP_FREQ) as fpf :
     fp = json.load(fpf)

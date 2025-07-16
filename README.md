@@ -29,56 +29,24 @@ classification: qualifier categorization and analysis work (in xlsx files)
 
   This gnerates three files: p-q-freq.json, q-freq.json, and p-freq.json.
 
-    python3 <path-to>/src/import/transpose_rmex_p_q.py <p-q-freq.json >q-p-freq.json # or transpose_p_q.py
+    python3 <<path-to>>/src/import/transpose_rmex_p_q.py < p-q-freq.json > q-p-freq.json # or transpose_p_q.py
 
   Generate the q-p-f by transposing p-q-f
-  The rmex version removes the Wikidata example ... properties (not a real qualification use)
+  The rmex version removes the 'Wikidata example ...' properties (not a real qualification use)
 
 
-3. Extract the property names :
-   
-   use the wikidata query service with the query in src/import/import_property_labels.sparql
+3. Generate a browser friendly version of the q->p->frequencies dictionary (with the qualifier and property names)
 
-   download in json and sort the file ("sort by" in sparql causes a timout)
+    python3 path-to/src/import/gen_html_view.py q-p-freq.json q-freq.json >view_q-p-freq.html
 
-   sort -u prop-names-25.json > prop-names.json
-   
-   edit prop-names.json to add a , to the line that was in last position and remove it from the last line
+  In addition this script generates the following files if they don't exist yet: 
+  - prop-names.csv - property names
+  - allowed-as-qualifiers.csv  - the properties that are not explicitly prohibited as qualifiers
+  - prop-allowed-qualifiers.json - the qualifiers allowed for each property with such a restriction
 
-4. Generate a browser friendly version of the q->p->frequenciesdictionary (with the qualifier and property names)
 
-    #- JSON
-    python3 path-to/src/import/gen_view_q-p-freq.py q-p-freq.json q-freq.json prop-names.json >view_q-p-freq.json
-    #- HTML
-    python3 path-to/src/import/gen_html_view.py q-p-freq.json q-freq.json prop-names.json >view_q-p-freq.html
+4. Compute the diversity indexes
 
-    To obtain a view that shows the Allowed qualifiers constraint violation.
-    a. Generate a csv file with the allowed qualifiers for each property (properties without constraint must not appear)
+    python3 <<path-to>>/src/import/diversity_index.py q-p-freq.json q-freq.json p-freq.json  >q_diversity.csv
 
-    SELECT ?p ?q
-    {  ?p wikibase:qualifier ?pq . # select all properties
-       ?p p:P2302 ?sc . ?sc ps:P2302 wd:Q21510851 .  ?sc pq:P2306 ?q 
-    }
-
-    b. Run gen_html_view.py with this file as last parameter
-
-5. Generate the list of globally allowed qualifiers
-   
-   Theese are properties that are not explicitly dissalowed as qualifiers
-
-   SELECT DISTINCT ?p 
-    {
-    ?p wikibase:qualifier ?q . # only look for qualifiers
-    OPTIONAL { ?p p:P2302 ?sc . ?sc ps:P2302 wd:Q53869507 .  # property scope consraint
-            MINUS { ?sc pq:P5314 wd:Q54828449 . } # not allowing qualifiers
-            MINUS { ?sc pq:P4680 ?scope . } # no scope for this Constraint
-            MINUS { ?sc wikibase:rank wikibase:DeprecatedRank . } # not deprecated
-            BIND ( "NO" as ?allowed ) } # not allowed as qualifier
-    FILTER(! BOUND(?allowed))   
-    }
-
-6. Compute the diversity indexes
-
-    python3 <path-to>/src/import/diversity_index.py q-p-freq.json q-freq.json p-freq.json. prop_names.json >q_diversity.csv
-
-7. Use q_diversity.csv and view_q-p-freq.html to analyze the qualifiers
+2. Use q_diversity.csv and view_q-p-freq.html to analyze the qualifiers
