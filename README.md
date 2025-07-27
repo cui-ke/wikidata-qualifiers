@@ -11,7 +11,7 @@ classification: qualifier categorization and analysis work (in xlsx files)
 
 ## Analysis process
 
-(DIR is the path to the Wikidata-Qualifiers directory)
+(DIR is the path to the directory where the wikidata-qualifiers repository has been cloned)
 
 1. Download a wikidata dump. For instance
 
@@ -21,7 +21,7 @@ classification: qualifier categorization and analysis work (in xlsx files)
 
 2. Extract the {qualifier -> {property -> frequency}}, the {qualifier -> frequency}, and the {property -> frequency} dictionaries
 
-    lbzip2 -dkc latest-all.json.bz2 | python3 DIR/src/import/extract_q-p-freq.py >extract.out &
+    lbzip2 -dkc latest-all.json.bz2 | python3 DIR/src/import/extract_p_q_freq.py >extract.out &
   
   - lbzip2 is much faster than bzip2
   - most of the compute time is spent in lbzip2 => useless to optimize the python script
