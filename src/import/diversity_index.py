@@ -54,21 +54,22 @@ abundance = {}
 
 for q in f:
     abundance[q] = len(f[q]) # abundance
-    sq = sum(f[q].values())
-    snq = 0
+    sum_prop_freq = sum(f[q].values()) # Sum of the frequencies of the properties qualified by q
+    sum_proportional_prop_freq = 0
+    # Sum of the proportional frequencies of the properties qualified by q
     for p in f[q]: 
-        snq += f[q][p]/fp[p]
+        sum_proportional_prop_freq += f[q][p]/fp[p]
     shan = 0.0
     shanprop = 0.0
-    sumtp = 0.0
-    sumtpn = 0.0
+    # sumtp = 0.0
+    # sumtpn = 0.0
     for p in f[q]: 
-        tp = f[q][p]/sq
-        shan +=  tp * math.log(tp)
-        sumtp += tp
-        tpn = f[q][p]/fp[p]/snq
-        shanprop += tpn * math.log(tpn)
-        sumtpn += tpn
+        relative_freq_of_p = f[q][p]/sum_prop_freq 
+        shan +=  relative_freq_of_p * math.log(relative_freq_of_p)
+        # sumtp += relative_freq_of_p
+        relative_proportional_freq_of_p = f[q][p]/fp[p]/sum_proportional_prop_freq
+        shanprop += relative_proportional_freq_of_p * math.log(relative_proportional_freq_of_p)
+        # sumtpn += relative_proportional_freq_of_p
     idx = math.exp(-shan)
     idxn = math.exp(-shanprop)
     divsh[q] = idx

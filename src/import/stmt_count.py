@@ -9,7 +9,7 @@ output:
  - no. qualified statements
  - no. qualified statements that are not examples
 
-usage: bzip2 -cdk wikidata-dump.json.bz2 | python path-to-count_stmt.py
+usage: lbzip2 -cdk wikidata-dump.json.bz2 | python path-to-count_stmt.py
 """
 
 import sys
