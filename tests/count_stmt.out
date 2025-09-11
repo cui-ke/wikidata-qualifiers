@@ -1,0 +1,17 @@
+e: 1_000, s: 88_962, ds: 685, qualified_count: 24_824 non_ex_qualified 24_824
+e: 2_000, s: 159_913, ds: 2332, qualified_count: 44_700 non_ex_qualified 44_700
+e: 3_000, s: 205_628, ds: 2551, qualified_count: 56_588 non_ex_qualified 56_588
+e: 4_000, s: 247_359, ds: 2768, qualified_count: 64_401 non_ex_qualified 64_401
+e: 5_000, s: 292_990, ds: 3015, qualified_count: 73_978 non_ex_qualified 73_978
+e: 6_000, s: 344_029, ds: 3350, qualified_count: 83_946 non_ex_qualified 83_946
+e: 7_000, s: 393_267, ds: 3596, qualified_count: 94_667 non_ex_qualified 94_667
+e: 8_000, s: 449_020, ds: 3826, qualified_count: 105_107 non_ex_qualified 105_107
+e: 9_000, s: 497_074, ds: 4008, qualified_count: 112_887 non_ex_qualified 112_887
+
+
+Entities: 9_999
+Statements: 557_799
+  Deprecated: 4_327
+  Non-deprecated: 553_472
+    Qualified: 125_024
+      Non-example qualified: 125_024
