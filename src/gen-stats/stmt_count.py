@@ -51,6 +51,13 @@ for line in sys.stdin:
         if entity_count % 1000 == 0:
             fo.write(f'e: {entity_count:_}, s: {stmt_count:_}, ds: {dep_stmt_count}, qualified_count: {qualified_count:_} non_ex_qualified {non_ex_qualified:_}\n')
             fo.flush()
-
-fo.write(f'e: {entity_count:_}, s: {stmt_count:_}, ds: {dep_stmt_count}, qualified_count: {qualified_count:_} non_ex_qualified {non_ex_qualified:_}\n')
+fo.write('\n')
+fo.write(f'''
+Entities: {entity_count:_}
+Statements: {stmt_count:_}
+  Deprecated: {dep_stmt_count:_}
+  Non-deprecated: {stmt_count-dep_stmt_count:_}
+    Qualified: {qualified_count:_}
+      Non-example qualified: {non_ex_qualified:_}
+''')
 fo.close()
