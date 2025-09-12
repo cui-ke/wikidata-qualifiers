@@ -3,7 +3,7 @@ Compute the diversity indexes for the qualifiers
 
 usage:
 
-    python3 diversity_index.py q_p_freq.json q_freq.json p_freq.json prop_names.json
+    python3 diversity_index.py q-p-freq.json q-freq.json p-freq.json prop-names.json
 
 output: for each qualifier several diversity indexes 
     currently:
@@ -75,8 +75,9 @@ for q in f:
     divsh[q] = idx
     divshn[q] = idxn
 
-for q in sorted(list(fq.keys()), key = lambda x : fq[x], reverse=True):
+print(f'Qualifer,Frequency,Sh. Diversity,Sh. Prop. Diversity,Abundance,Importance Score')
+for q in sorted(list(fq.keys()), key = lambda x : divshn[q]*fq[x], reverse=True):
     if q in f:
         name = pname[q] if q in pname else "*** UNKNOWN NAME"
         name = name.replace('"','""')
-        print(f'{q},"{name}",{fq[q]},{divsh[q]},{divshn[q]}, {abundance[q]}')
+        print(f'{q},"{name}",{fq[q]},{divsh[q]},{divshn[q]}, {abundance[q]}, {divshn[q]*fq[q]}')
