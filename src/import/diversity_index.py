@@ -75,7 +75,7 @@ for q in f:
     divsh[q] = idx
     divshn[q] = idxn
 
-print(f'Qualifer,Frequency,Sh. Diversity,Sh. Prop. Diversity,Abundance,Importance Score')
+print(f'Qualifer,Name,Frequency,Sh. Diversity,Sh. Prop. Diversity,Abundance,Importance Score')
 for q in sorted(list(fq.keys()), key = lambda x : divshn[q]*fq[x], reverse=True):
     if q in f:
         name = pname[q] if q in pname else "*** UNKNOWN NAME"
